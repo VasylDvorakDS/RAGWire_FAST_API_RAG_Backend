@@ -1,2 +1,3 @@
-# RAGWire_FAST_API_RAG_Backend
-RAGWire FAST API RAG Backend
+# RAFWire_FAST_API_RAG_Backend
+
+RAFWire FAST API RAG Backend
