@@ -5,10 +5,12 @@
 ## Linux/MacOS
 # AGENT=02_langgraph_self_correcting_agent python main.py
 
+
 import importlib, json, os, tempfile, time, uuid
 from typing import List
-from fastapi import APIRouter, File, HTTPException, UploadFile
+from fastapi import APIRouter, File, HTTPException, UploadFile, Security
 from fastapi.responses import StreamingResponse
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel
 from tools import rag
 
@@ -41,11 +43,20 @@ def chunk(cid, ts, content="", finish_reason=None):
             }]})}\n\n"
             
 
+API_KEY = os.getenv("API_KEY")
+bearer = HTTPBearer(auto_error=False)
+
+def verify_api_key(credentials: HTTPAuthorizationCredentials = Security(bearer)):
+    if API_KEY and (not credentials or credentials.credentials != API_KEY):
+        raise HTTPException(status_code=401, detail="Invalid or missing API key")
+
+
 @router.get("/health")
 async def health():
     return {"status": "ok"}
 
-@router.get("/v1/models")
+# @router.get("/v1/models")
+@router.get("/v1/models", dependencies=[Depends(verify_api_key)])
 async def list_models():
     return {
         "object": "list", 
@@ -60,7 +71,8 @@ async def list_models():
                 ]}
     
 
-@router.get("/v1/models/{model_id}")
+#@router.get("/v1/models/{model_id}")
+@router.get("/v1/models/{model_id}", dependencies=[Depends(verify_api_key)])
 async def get_model(model_id: str):
     return {
         "id": model_id, 
@@ -68,8 +80,8 @@ async def get_model(model_id: str):
         "created": int(time.time()), 
         "owned_by": "ragwire"}
     
-    
-@router.post("/v1/chat/completions")
+# @router.post("/v1/chat/completions")
+@router.post("/v1/chat/completions", dependencies=[Depends(verify_api_key)])
 async def chat_completions(req: ChatRequest):
     messages = [m.model_dump() for m in req.messages]
     if not messages:
@@ -91,8 +103,8 @@ async def chat_completions(req: ChatRequest):
                              headers={"Cache-Control": "no-cache", 
                                       "X-Accel-Buffering": "no"})
 
-
-@router.post("/upload")
+# @router.post("/upload")
+@router.post("/upload", dependencies=[Depends(verify_api_key)])
 async def upload_documents(files: List[UploadFile] = File(...)):
     with tempfile.TemporaryDirectory() as tmpdir:
         for f in files:
