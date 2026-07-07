@@ -8,7 +8,7 @@
 
 import importlib, json, os, tempfile, time, uuid
 from typing import List
-from fastapi import APIRouter, File, HTTPException, UploadFile, Security
+from fastapi import APIRouter, File, HTTPException, UploadFile, Security, Depends
 from fastapi.responses import StreamingResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel
