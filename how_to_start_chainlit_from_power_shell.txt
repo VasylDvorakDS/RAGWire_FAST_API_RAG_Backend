@@ -1,0 +1,10 @@
+                                                                                                    
+& "D:\DataSience\Anaconda\shell\condabin\conda-hook.ps1"                                                                                                                                                                                                       
+
+conda activate ragwire-prod-rag 
+
+cd "E:\Advanced RAG Build & Deploy Production GenAI Apps\Working_Git_Versa_repositories\Big_projects\Multi_Agent_with_RAG_OpenAI_endpoints_ChainlitUI_download_pdf\Chainlit Chat Frontend"
+
+chainlit create-secret 
+
+$env:FASTAPI_URL="https://ragwire-fast-api-rag-backend-dvn.onrender.com"; chainlit run app.py
