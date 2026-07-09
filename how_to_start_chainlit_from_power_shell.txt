@@ -8,3 +8,5 @@ cd "E:\Advanced RAG Build & Deploy Production GenAI Apps\Working_Git_Versa_repos
 chainlit create-secret 
 
 $env:FASTAPI_URL="https://ragwire-fast-api-rag-backend-dvn.onrender.com"; chainlit run app.py
+
+$env:FASTAPI_URL="https://ragwirefastapiragbackend-production.up.railway.app"; chainlit run app.py
