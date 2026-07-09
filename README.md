@@ -112,6 +112,7 @@ Includes source attribution (filename + page)
 ### Deploying FAST API in RENDER
 
 FAST API was deploing in the render with all environment variables from Git Hub repository.
+FAST API with AI server adress: https://ragwire-fast-api-rag-backend-dvn.onrender.com
 To start Chainlit chat it is necessary to start command in Windows Power Shell:
 
 & "D:\DataSience\Anaconda\shell\condabin\conda-hook.ps1"
@@ -120,6 +121,19 @@ cd "E:\Advanced RAG Build & Deploy Production GenAI Apps\Working_Git_Versa_repos
 chainlit create-secret 
 $env:CHAINLIT_AUTH_SECRET="SECRET"
 $env:FASTAPI_URL="https://ragwire-fast-api-rag-backend-dvn.onrender.com"; chainlit run app.py
+
+### Deploying FAST API in RAILWAY
+
+FAST API was deploing in the railway with all environment variables from Git Hub repository.
+FAST API with AI server adress: https://ragwirefastapiragbackend-production.up.railway.app
+To start Chainlit chat it is necessary to start command in Windows Power Shell:
+
+& "D:\DataSience\Anaconda\shell\condabin\conda-hook.ps1"
+conda activate ragwire-prod-rag
+cd "E:\Advanced RAG Build & Deploy Production GenAI Apps\Working_Git_Versa_repositories\Big_projects\Multi_Agent_with_RAG_OpenAI_endpoints_ChainlitUI_download_pdf\Chainlit Chat Frontend"
+chainlit create-secret 
+$env:CHAINLIT_AUTH_SECRET="SECRET"
+$env:FASTAPI_URL="https://ragwirefastapiragbackend-production.up.railway.app"; chainlit run app.py
 
 <br><br>
 ![pic1](./Chainlit_UI.png)<br><br>
@@ -131,4 +145,7 @@ $env:FASTAPI_URL="https://ragwire-fast-api-rag-backend-dvn.onrender.com"; chainl
 ![pic1](./Render_log_project.png)<br><br>
 ![pic1](./Render_log_project_in_production.png)<br><br>
 ![pic1](./Vscode_postman_test_connection.png)<br><br>
+![pic1](./Railway_deployment_of_FastAPI.png)<br><br>
+![pic1](./check_request_for_railway.png)<br><br>
+![pic1](./railway_log.png)<br><br>
 

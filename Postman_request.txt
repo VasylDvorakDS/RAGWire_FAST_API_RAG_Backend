@@ -1,0 +1,14 @@
+GET https://ragwirefastapiragbackend-production.up.railway.app/health
+
+GET https://ragwirefastapiragbackend-production.up.railway.app/v1/models
+Headers: Authorization   Bearer ndRH5qdJTeMIqstkGpe1YoZweDlaVtSD
+
+POST https://ragwirefastapiragbackend-production.up.railway.app/v1/chat/completions
+Headers: Authorization   Bearer ndRH5qdJTeMIqstkGpe1YoZweDlaVtSD
+Body raw: 
+{
+    "model": "ragwire-agent",
+    "messages": [
+        {"role": "user", "content": "what is apple revenue in 2024?"}
+    ]
+}
