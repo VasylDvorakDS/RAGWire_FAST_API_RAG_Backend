@@ -135,6 +135,19 @@ chainlit create-secret
 $env:CHAINLIT_AUTH_SECRET="SECRET"
 $env:FASTAPI_URL="https://ragwirefastapiragbackend-production.up.railway.app"; chainlit run app.py
 
+### Deploying FAST API in GOOGLE CLOUD
+
+FAST API was deploing in the railway with all environment variables from Git Hub repository.
+FAST API with AI server adress: https://fastapi-rag-backend-499877968108.us-central1.run.app
+To start Chainlit chat it is necessary to start command in Windows Power Shell:
+
+& "D:\DataSience\Anaconda\shell\condabin\conda-hook.ps1"
+conda activate ragwire-prod-rag
+cd "E:\Advanced RAG Build & Deploy Production GenAI Apps\Working_Git_Versa_repositories\Big_projects\Multi_Agent_with_RAG_OpenAI_endpoints_ChainlitUI_download_pdf\Chainlit Chat Frontend"
+chainlit create-secret 
+$env:CHAINLIT_AUTH_SECRET="SECRET"
+$env:FASTAPI_URL="https://fastapi-rag-backend-499877968108.us-central1.run.app"; chainlit run app.py
+
 <br><br>
 ![pic1](./Chainlit_UI.png)<br><br>
 ![pic1](./Chainlit_UI_multi_agents.png)<br><br>
@@ -148,4 +161,7 @@ $env:FASTAPI_URL="https://ragwirefastapiragbackend-production.up.railway.app"; c
 ![pic1](./Railway_deployment_of_FastAPI.png)<br><br>
 ![pic1](./check_request_for_railway.png)<br><br>
 ![pic1](./railway_log.png)<br><br>
+![pic1](./Build_project_in_google_cloud.png)<br><br>
+![pic1](./Google_cloud_run_logs.png)<br><br>
+![pic1](./Google_cloud_run.png)<br><br>
 
